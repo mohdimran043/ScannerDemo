@@ -597,7 +597,7 @@ function rdPDF_onclick() {
     
     var _chkMultiPagePDF = document.getElementById("MultiPagePDF");
     _chkMultiPagePDF.disabled = false;
-    _chkMultiPagePDF.checked = false;
+    _chkMultiPagePDF.checked = true;
 
 }
 

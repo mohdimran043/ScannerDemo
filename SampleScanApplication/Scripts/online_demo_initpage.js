@@ -165,11 +165,11 @@ function initCustomScan() {
     ObjString += "<li>";
     ObjString += "<label id ='lblShowUI' for = 'ShowUI'><input type='checkbox' id='ShowUI' />Show UI&nbsp;</label>";
     ObjString += "<label for = 'ADF'><input type='checkbox' id='ADF' />AutoFeeder&nbsp;</label>";
-    ObjString += "<label for = 'Duplex'><input type='checkbox' id='Duplex'/>Duplex</label></li>";
+    ObjString += "<label for = 'Duplex'><input type='checkbox' id='Duplex' checked/>Duplex</label></li>";
     ObjString += "<li>Pixel Type:";
     ObjString += "<label for='BW' style='margin-left:5px;'><input type='radio' id='BW' name='PixelType'/>B&amp;W </label>";
     ObjString += "<label for='Gray'><input type='radio' id='Gray' name='PixelType'/>Gray</label>";
-    ObjString += "<label for='RGB'><input type='radio' id='RGB' name='PixelType'/>Color</label></li>";
+    ObjString += "<label for='RGB'><input type='radio' id='RGB' name='PixelType' checked/>Color</label></li>";
     ObjString += "<li>";
     ObjString += "<span>Resolution:</span><select size='1' id='Resolution'><option value = ''></option></select></li>";
     ObjString += "</ul>";
@@ -184,8 +184,10 @@ function initCustomScan() {
         vResolution.options.add(new Option("150", 150));
         vResolution.options.add(new Option("200", 200));
         vResolution.options.add(new Option("300", 300));
-
-        vResolution.options[3].selected = true; 
+        vResolution.options.add(new Option("400", 400));
+        vResolution.options.add(new Option("500", 500));
+        vResolution.options.add(new Option("700", 700));
+        vResolution.options[6].selected = true; 
     }
   
 }
@@ -201,7 +203,6 @@ function initiateInputs() {
             allinputs[i].value = "";
         }
     }
-
 
     if (Dynamsoft.Lib.env.bIE == true && Dynamsoft.Lib.env.bWin64 == true) {
         var o = document.getElementById("samplesource64bit");
@@ -227,17 +228,25 @@ function initDllForChangeImageSize() {
 }
 
 function setDefaultValue() {
-    var vGray = document.getElementById("Gray");
-    if(vGray)
-        vGray.checked = true;
+    //var vGray = document.getElementById("Gray");
+    //if(vGray)
+    //    vGray.checked = true;
  
-    var varImgTypepng2 = document.getElementById("imgTypepng2");
-    if (varImgTypepng2)
-        varImgTypepng2.checked = true;
-    var varImgTypepng = document.getElementById("imgTypepng");
-    if (varImgTypepng)
-        varImgTypepng.checked = true;
+    //var varImgTypepng2 = document.getElementById("imgTypepng2");
+    //if (varImgTypepng2)
+    //    varImgTypepng2.checked = true;
+    //var varImgTypepng = document.getElementById("imgTypepng");
+    //if (varImgTypepng)
+    //    varImgTypepng.checked = true;
 
+    var varDuplex = document.getElementById("Duplex");
+    if (varDuplex)
+        varDuplex.checked = true;
+
+    var varimgTypepdf = document.getElementById("imgTypepdf");
+    if (varimgTypepdf)
+        varimgTypepdf.checked = true;
+    rdPDF_onclick();
     var _strDefaultSaveImageName = "WebTWAINImage";
     var _txtFileNameforSave = document.getElementById("txt_fileNameforSave");
     if(_txtFileNameforSave)
